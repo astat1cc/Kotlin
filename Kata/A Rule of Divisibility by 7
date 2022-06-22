@@ -1,0 +1,20 @@
+package divseven
+
+fun seven(n:Long):LongArray {
+    var m: Long = n
+    var steps: Long = 0
+    var returning = LongArray(2)
+    var lastDigit: Long
+    while (m > 0) {
+        steps++
+        lastDigit = (m % 10)
+        m /= 10
+        m -= (2 * lastDigit)
+        if (m < 100) {
+            returning[0] = m
+            returning[1] = steps
+            return returning
+        }
+    }
+    return returning
+}
