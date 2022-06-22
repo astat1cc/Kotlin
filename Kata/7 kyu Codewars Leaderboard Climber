@@ -1,0 +1,23 @@
+package com.codewars.apartridge
+
+object CodewarsLeaderboardClimber {
+ fun leaderBoard(user:String, userScore:Int, yourScore:Int):String {
+    if (yourScore > userScore) return("Winning!")
+    else {
+        var yourScoreCopy = yourScore
+        var beta = 0
+        var kyu8 = 0
+        while (yourScoreCopy < userScore - 2) {
+            yourScoreCopy += 3
+            beta++
+        }
+        while (yourScoreCopy < userScore) {
+            yourScoreCopy++
+            kyu8++
+        }
+        var ans = "To beat $user's score, I must complete $beta Beta kata and $kyu8 8kyu kata."
+        if(beta + kyu8 > 1000) ans += " Dammit!"
+        return ans
+    }
+}
+}
