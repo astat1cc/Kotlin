@@ -1,0 +1,9 @@
+package accum
+
+fun accum(s:String):String {
+    var answer = ""
+    for (i in s.indices) {
+        answer += s[i].toString().lowercase().repeat(i + 1).replaceFirstChar { it.uppercaseChar() } + "-"
+    }
+    return answer.dropLast(1)
+}
