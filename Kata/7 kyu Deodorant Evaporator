@@ -1,0 +1,8 @@
+import kotlin.math.pow
+
+fun evaporator(content: Double, evap_per_day: Double, threshold: Double): Int {
+    for (day in 1..1000) {
+        if (content * (1 - evap_per_day / 100).pow(day) < content * threshold / 100) return day
+    }
+    return -1
+}
