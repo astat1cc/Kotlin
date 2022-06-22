@@ -1,0 +1,12 @@
+fun moveTen(s: String): String {
+    var movedTenStr = ""
+    var movedTenChar: Char
+    s.forEach { char ->
+        movedTenChar = char + 10
+        if (movedTenChar.code > 122){
+            movedTenChar -= 26 
+        }
+        movedTenStr += movedTenChar
+    }
+    return movedTenStr
+}
