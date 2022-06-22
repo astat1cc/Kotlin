@@ -1,0 +1,30 @@
+import kotlin.random.Random
+
+fun main() {
+    val first  = listOf(121, 144, 19, 161, 19, 144, 19, 11)
+    val second = listOf(132, 14641, 20736, 361, 25921, 361, 20736, 361)
+    println(comp(first.toIntArray(), second.toIntArray()))
+}
+
+fun List<Int>.toIntArray() = this.toTypedArray().toIntArray()
+
+fun Int.square() = this * this
+
+fun comp(first: IntArray?, second: IntArray?): Boolean {
+    if (first != null && second != null &&
+        first.size == second.size
+    ) {
+        var found = mutableListOf<Int>()
+        first.forEach { num ->
+            if (second.contains(num.square())) found.add(num.square())
+        }
+        if (
+            found.toIntArray()
+                .sortedArray()
+                .contentEquals(second.sortedArray())
+        ) {
+            return true
+        }
+    }
+    return false
+}
