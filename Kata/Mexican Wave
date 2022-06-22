@@ -1,0 +1,12 @@
+fun wave(str: String): List<String> {
+    var waveList = mutableListOf<String>()
+    var chars = charArrayOf()
+    for (item in str.indices) {
+        if (str[item] != ' ') {
+        chars = str.toCharArray()
+        chars[item] = chars[item].toUpperCase()
+        waveList.add(chars.joinToString(separator = ""))
+        }
+    }
+    return waveList
+}
