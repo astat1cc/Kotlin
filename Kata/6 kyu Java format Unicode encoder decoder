@@ -1,0 +1,22 @@
+object JavaUnicodeEncoder {
+   fun decode(input:String):String {
+
+    val inputChars = input.split("""\u""").drop(1)
+    var unicodeReady = ""
+    for (i in inputChars) {
+        unicodeReady += "${i.toInt(16).toChar()}"
+    }
+
+    return unicodeReady
+}
+  
+    fun encode(input:String):String {
+
+    val unicodeReadyList = mutableListOf<String>()
+    for (i in input) {
+        unicodeReadyList.add("\\u00${i.toInt().toString(16)}" )
+    }
+
+    return unicodeReadyList.joinToString("").filter { !it.isWhitespace() }
+}
+}
