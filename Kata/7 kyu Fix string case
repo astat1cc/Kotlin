@@ -1,0 +1,9 @@
+object FixStringCase {
+    
+    fun solve(s: String): String {
+    val uppercaseFilter = s.filter { it.isUpperCase() }
+    if (uppercaseFilter.length > s.length / 2) return s.uppercase()
+    else return s.lowercase()
+    }
+    
+}
