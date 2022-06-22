@@ -1,0 +1,24 @@
+package solution
+
+import java.math.BigInteger
+
+object Diagonal {
+
+    fun diagonal(n: Int, p: Int): BigInteger {
+    var sum = 0.toBigInteger()
+    for (row in n downTo p) {
+        sum += formula(row, p)
+    }
+    return sum
+}
+
+fun formula(n: Int, p: Int) = factorial(n) / (factorial(p) * factorial(n - p))
+
+fun factorial(number: Int): BigInteger {
+    var result = 1L
+    for (i in 1..number) {
+        result *= i
+    }
+    return result.toBigInteger()
+}
+}
