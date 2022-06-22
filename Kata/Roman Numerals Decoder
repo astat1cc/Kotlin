@@ -1,0 +1,18 @@
+package romannumerals
+
+fun decode(str: String): Int {
+    var res = 0
+    val map = mapOf('M' to 1000, 'D' to 500, 'C' to 100, 'L' to 50, 'X' to 10, 'V' to 5, 'I' to 1)
+    indicesLoop@ for (item in str.indices) {
+        checkLoop@ for (i in 0..2) {
+            if((item + i + 1) < str.length) {
+                if (map[str[item]]!! < map[str[item + i + 1]]!!) {
+                    res -= map[str[item]]!!
+                    continue@indicesLoop
+                }
+            } else break@checkLoop
+        }
+        res += map[str[item]]!!
+    }
+    return res
+}
