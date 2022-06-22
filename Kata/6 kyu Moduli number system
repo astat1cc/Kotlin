@@ -1,0 +1,18 @@
+package solution
+
+object ModSystem {
+    
+    fun fromNb2Str(n: Int, sys: IntArray): String {
+    if (!isApplicable(n, sys)) return "Not applicable"
+    var result = ""
+    return sys.map { "-${n % it}-" }.joinToString("")
+}
+
+fun isApplicable(n: Int, sys: IntArray): Boolean {
+    if (sys.reduce { a, b -> a * b } < n) return false
+    for (divider in 2..sys.maxOrNull()!!) {
+        if (sys.count { it % divider == 0 } > 1) return false
+    }
+    return true
+}
+}
