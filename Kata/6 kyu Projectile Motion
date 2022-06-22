@@ -1,0 +1,43 @@
+package projectile
+import kotlin.math.*
+
+class Projectile(val h0: Int, val v0: Int, val degrees: Int) {
+    val rad = Math.PI / 180
+
+    fun heightEq(): String {
+        if(h0 != 0) {
+            return "h(t) = -16.0t^2 + ${Math.round((v0 * sin(degrees * rad)) * 1000.0) / 1000.0}t + ${h0 * 1.0}"
+        } else return "h(t) = -16.0t^2 + ${Math.round((v0 * sin(degrees * rad)) * 1000.0) / 1000.0}t"
+        
+    }
+
+    fun horizEq(): String {
+        return "x(t) = ${Math.round((v0*cos(degrees * rad)) * 1000.0) / 1000.0}t"
+    }
+
+    fun height(t: Double): Double {
+        return Math.round((-16.0 * t.pow(2) + v0*sin(degrees * rad) * t + h0) * 1000.00) / 1000.0
+    }
+
+    fun horiz(t: Double): Double {
+        return Math.round((v0 * cos(degrees * rad) * t) * 1000.0) / 1000.0
+    }
+
+      fun landing(): DoubleArray {
+        val discriminant = (v0 * sin(degrees * rad)).pow(2) - 4 * (-16) * h0
+        val t1 = (-(v0 * sin(degrees * rad)) + sqrt(discriminant)) / (2 * -16)
+        val t2 = (-(v0 * sin(degrees * rad)) - sqrt(discriminant)) / (2 * -16)
+
+
+        val i: Double
+        if (t1 * t2 <= 0) {
+            i = max(t1, t2)
+        } else if (t1 > 0 && t2 > 0) {i = min(t1, t2)}
+        else return error("Time value is negative")
+
+
+
+        val landingLocation: DoubleArray = doubleArrayOf(horiz(i), 0.0, Math.round(i * 1000.0) / 1000.0)
+        return landingLocation
+        }
+   }
