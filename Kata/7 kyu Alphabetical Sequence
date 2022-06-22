@@ -1,0 +1,28 @@
+fun alphaSeq(str: String): String {
+        var n: Int
+        var stringToReturn = ""
+        val alphabetMap = mutableMapOf<Char, Int>()
+        var charNumber = 1
+        for (i in 'a'..'z') {
+                alphabetMap[i] = charNumber++
+        }
+
+        var strChars = str.toCharArray()
+        for (i in strChars.indices) {
+                strChars[i] = strChars[i].toLowerCase()
+        }
+        strChars = strChars.sorted().toCharArray()
+        
+        
+        for (i in strChars) {
+                stringToReturn += ",${i.toUpperCase()}"
+                n = alphabetMap.getValue(i.toLowerCase()) - 1
+                for (j in n downTo 1) {
+                        if (n != 0) stringToReturn += "${i.toLowerCase()}"
+                }
+
+        }
+        stringToReturn = stringToReturn.drop(1)
+        
+        return stringToReturn
+}
