@@ -1,0 +1,1 @@
+fun removeChar(str: String) = str.dropLast(1).drop(1)
