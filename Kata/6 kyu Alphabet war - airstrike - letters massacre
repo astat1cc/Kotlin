@@ -1,0 +1,32 @@
+fun alphabetWar(fight: String): String {
+    val leftSide = listOf('w', 'p', 'b', 's')
+    val rightSide = listOf('m', 'q', 'd', 'z')
+
+    val bombRegex = """.?\*.?""".toRegex()
+
+    var field = fight
+
+
+    bombRegex.findAll(field)
+        .forEach { field = field.replaceFirst(it.value, "") }
+    var fieldAfterPowerCheck: String
+    fieldAfterPowerCheck = field.cloneLettersByPower(leftSide, rightSide)
+
+    val leftSideRemaining = fieldAfterPowerCheck.count { leftSide.contains(it) }
+    val rightSideRemaining = fieldAfterPowerCheck.count { rightSide.contains(it) }
+    return if (leftSideRemaining > rightSideRemaining) "Left side wins!"
+    else if (leftSideRemaining < rightSideRemaining) "Right side wins!"
+    else "Let's fight again!"
+}
+
+fun String.cloneLettersByPower(firstSide: List<Char>, secondSide: List<Char>): String {
+    val commonList = firstSide.mapIndexed { i, _ ->
+        Pair(firstSide[i], secondSide[i])
+    }
+    var fieldAfterPowerCheck = this
+    commonList.reversed().forEachIndexed { i, ch ->
+        fieldAfterPowerCheck = fieldAfterPowerCheck.replace(ch.first.toString(), "${ch.first.toString().repeat(i + 1)}")
+        fieldAfterPowerCheck = fieldAfterPowerCheck.replace(ch.second.toString(), "${ch.second.toString().repeat(i + 1)}")
+    }
+    return fieldAfterPowerCheck
+}
