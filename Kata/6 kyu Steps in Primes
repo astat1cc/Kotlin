@@ -1,0 +1,24 @@
+package step
+
+import java.util.Arrays
+
+// if these g-steps prime numbers don't exist return []
+fun step(step:Int, start:Long, end:Long):LongArray {
+    for (digit in start..end) {
+        if (isPrimeNumber(digit) &&
+            isPrimeNumber(digit + step)
+        ) {
+            return longArrayOf(digit, digit + step)
+        }
+    }
+    return longArrayOf()
+}
+
+
+fun isPrimeNumber(number: Long): Boolean {
+    if (number % 2 == 0L) return false
+    for (digit in 3 until number step 2) {
+        if (number % digit == 0L) return false
+    }
+    return true
+}
