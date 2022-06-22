@@ -1,0 +1,22 @@
+package com.codewars.a.partridge
+
+object DoubleSort {
+ fun dbSort(a:Array<Any>):Array<Any> {
+    val newIntList = mutableListOf<Int>()
+    val newStringList = mutableListOf<String>()
+    var iInt = 0
+    var iStr = 0
+    a.forEachIndexed { index, element ->
+        if (element is Int) {
+            newIntList.add(element)
+        }
+        else if (element is String) {
+            newStringList.add(element)
+        }
+    }
+
+    val concatenatedList = newIntList.sorted() + newStringList.sorted()
+
+    return concatenatedList.toTypedArray()
+}
+}
