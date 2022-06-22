@@ -1,0 +1,18 @@
+package countdig
+
+fun nbDig(n:Int, digit:Int):Int {
+    var digitOccurred = 0
+    for (multiplier in 0..n) {
+        val squared = square(multiplier)
+        val chunkSquared = squared.toString().chunked(1)
+        chunkSquared.forEach { checkDigit ->
+            if (checkDigit.toInt() == digit)
+                digitOccurred++
+        }
+    }
+    return digitOccurred
+}
+
+fun square(multiplier: Int): Int {
+    return multiplier*multiplier
+}
