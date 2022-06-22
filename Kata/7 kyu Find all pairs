@@ -1,0 +1,17 @@
+fun duplicates(array: IntArray): Int {
+    if (array.size < 2) return 0
+
+    var pairs = 0
+    val distinctedArray = array.distinct()
+    for (source in distinctedArray){
+        var timesFound = 0
+        for (restInt in array) {
+            if (source == restInt) timesFound++
+        }
+        when (timesFound) {
+            1 -> continue
+            in 2..array.size -> pairs += timesFound / 2
+        }
+    }
+    return pairs
+}
