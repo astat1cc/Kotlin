@@ -1,0 +1,19 @@
+package spinwords
+
+
+fun spinWords(sentence: String): String {
+
+    var listOfWords = mutableListOf<String>()
+    listOfWords = sentence.split(" ").toMutableList()
+
+    for (item in listOfWords.indices) {
+        if (listOfWords[item].length > 4) {
+            listOfWords[item] = listOfWords[item].reversed()
+        }
+    }
+    return listOfWords.joinToString(separator = " ")
+}
+
+fun main(args: Array<String>) {
+    println(spinWords("sentence"))
+}
