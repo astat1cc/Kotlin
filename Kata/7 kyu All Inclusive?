@@ -1,0 +1,16 @@
+package allinclusive
+
+fun containAllRots(strng:String, arr:ArrayList<String>):Boolean {
+        if (strng == "") return true
+        
+        var strngChars = strng.toMutableList()
+
+        for (i in arr.indices) {
+                if (!arr.contains(strngChars.joinToString(""))) {
+                        return false
+                }
+                strngChars += strngChars[0]
+                strngChars.removeFirst()
+        }
+        return true
+}
