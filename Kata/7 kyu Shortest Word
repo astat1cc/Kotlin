@@ -1,0 +1,8 @@
+fun findShort(s: String): Int {
+    var splited = s.split(" ")
+    var min = splited[0].length
+    for (i in splited.indices) {
+        if (splited[i].length < min) min = splited[i].length
+    }
+    return min
+}
