@@ -1,0 +1,10 @@
+fun countRedBeads(nBlue: Int): Int {
+    var redBeans: Int
+    when {
+        nBlue < 2 -> redBeans = 0
+        nBlue == 2 -> redBeans = 1
+        nBlue > 2 -> redBeans = (nBlue - 1) * 2
+        else -> redBeans = 0
+    }
+    return redBeans
+}
