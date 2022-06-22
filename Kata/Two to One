@@ -1,0 +1,8 @@
+package twotoone
+
+fun longest(s1:String, s2:String):String {
+    var str1 = s1.toCharArray().distinct().joinToString("")
+    var str2 = s2.toCharArray().distinct().joinToString("")
+    val sb = "$str1$str2"
+    return sb.toSortedSet().joinToString("", "", "")
+}
