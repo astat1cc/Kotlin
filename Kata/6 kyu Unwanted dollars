@@ -1,0 +1,12 @@
+package com.codewars.geoffp
+
+object UnwantedDollars {
+  fun moneyValue(money:String): Double {
+    var moneyToOnlyNumber = money.replace(" ", "")
+    moneyToOnlyNumber = moneyToOnlyNumber.replace("${'$'}", "")
+
+    return if (!moneyToOnlyNumber.contains("\\d+".toRegex())) {
+        0.0
+    } else moneyToOnlyNumber.toDouble()
+}
+}
