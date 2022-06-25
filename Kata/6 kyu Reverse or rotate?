@@ -1,0 +1,20 @@
+package revrot
+
+import kotlin.math.*
+
+fun revRot(nums:String, sz:Int): String {
+    val chunked = nums.chunked(sz).let {
+        if (it.last().length < sz) it.dropLast(1)
+        else it
+    }
+    return chunked.map { chunk ->
+        val sumOfChunk = chunk.sumOf { digit ->
+            digit.digitToInt().toDouble().pow(3)
+        }
+        if (sumOfChunk % 2 == 0.0) {
+            chunk.reversed()
+        } else {
+            chunk.drop(1) + chunk.first()
+        }
+    }.joinToString("")
+}
